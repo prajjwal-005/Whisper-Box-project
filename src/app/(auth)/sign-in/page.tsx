@@ -35,8 +35,9 @@ export default function SignInPage() {
 
  
 
-  const onSubmit = async (data: z.infer<typeof signinSchema>) => {
-    setIsSubmitting(true);
+ const onSubmit = async (data: z.infer<typeof signinSchema>) => {
+  setIsSubmitting(true);
+  try {
     const result = await signIn('credentials', {
       redirect: false,
       identifier: data.identifier,
@@ -44,24 +45,26 @@ export default function SignInPage() {
     });
 
     if (result?.error) {
-  if (result.error === 'CredentialsSignin') {
-  
-    toast.error('Login Failed', {
-      description: 'Incorrect username or password',
-    });
-  } else {
-   
-    toast.error('Error', {
-      description: result.error,
-    });
-  }
-  setIsSubmitting(false);
-}
+      if (result.error === 'CredentialsSignin') {
+        toast.error('Login Failed', { description: 'Incorrect username or password' });
+      } else {
+        toast.error('Error', { description: result.error });
+      }
+      
+      setIsSubmitting(false);
+      return;
+    }
 
     if (result?.url) {
+      toast.success('Login Successful');
       router.replace('/dashboard');
+     
     }
-  };
+  } catch (error) {
+    toast.error('An unexpected error occurred');
+    setIsSubmitting(false);
+  }
+};
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-950 text-white p-4">

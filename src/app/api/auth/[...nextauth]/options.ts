@@ -7,6 +7,7 @@ import UserModel from '@/model/User.model';
 
 export const authConfig: NextAuthConfig = {
   debug: true,
+  trustHost: true,
   session: { strategy: 'jwt' },
   secret: process.env.AUTH_SECRET,
   providers: [
