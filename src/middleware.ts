@@ -12,12 +12,12 @@ export async function middleware(request: NextRequest) {
   const secret = process.env.AUTH_SECRET;
 
   const token = await getToken({ 
-    req: request, 
-    secret,
-    salt: process.env.NODE_ENV === 'production' 
-      ? '__Secure-authjs.session-token' 
-      : 'authjs.session-token'
-  });
+  req: request, 
+  secret,
+  cookieName: process.env.NODE_ENV === 'production' 
+    ? '__Secure-authjs.session-token' 
+    : 'authjs.session-token'
+});
 
   if (token && (
     url.pathname === '/' || 

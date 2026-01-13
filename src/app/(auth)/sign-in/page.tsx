@@ -35,7 +35,7 @@ export default function SignInPage() {
 
  
 
- const onSubmit = async (data: z.infer<typeof signinSchema>) => {
+const onSubmit = async (data: z.infer<typeof signinSchema>) => {
   setIsSubmitting(true);
   try {
     const result = await signIn('credentials', {
@@ -50,16 +50,15 @@ export default function SignInPage() {
       } else {
         toast.error('Error', { description: result.error });
       }
-      
       setIsSubmitting(false);
       return;
     }
 
-if (result?.url) {
-  toast.success('Login Successful');
-  setIsSubmitting(false); 
- window.location.href = '/dashboard';
-}
+    if (result?.ok) {
+      toast.success('Login Successful');
+      router.push('/dashboard');
+      router.refresh(); 
+    }
   } catch (error) {
     toast.error('An unexpected error occurred');
     setIsSubmitting(false);
