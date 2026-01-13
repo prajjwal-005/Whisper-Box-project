@@ -2,6 +2,7 @@ import {dbConnect} from "@/lib/dbConnect";
 import UserModel from "@/model/User.model";
 import bcrypt from "bcrypt"
 import { sendVerificationEmail } from "@/helpers/sendEmailVerification";
+export const dynamic = 'force-dynamic';
 
 
 export async function POST(request: Request) {

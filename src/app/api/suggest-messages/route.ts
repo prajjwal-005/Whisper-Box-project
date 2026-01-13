@@ -1,6 +1,7 @@
 
 import { NextResponse } from 'next/server';
 import { questions } from '@/lib/questions'; 
+export const dynamic = 'force-dynamic';
 
 export const runtime = 'edge';
 function shuffleArray<T>(items: T[]): T[] {
