@@ -58,7 +58,7 @@ export default function SignInPage() {
 if (result?.url) {
   toast.success('Login Successful');
   setIsSubmitting(false); 
-  router.replace('/dashboard');
+ window.location.href = '/dashboard';
 }
   } catch (error) {
     toast.error('An unexpected error occurred');
