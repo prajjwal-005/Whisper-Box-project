@@ -14,7 +14,7 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Switch } from '@/components/ui/switch';
 import { User } from "next-auth";
-import { Loader2, RefreshCcw, Copy, LayoutDashboard } from "lucide-react";
+import { Loader2, RefreshCcw, Copy, LayoutDashboard,Palette,ArrowRight } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import Link from "next/link";
 import PageLoader from "@/components/ui/PageLoader";
@@ -118,7 +118,7 @@ const Dashboard = () => {
     if (status === "loading") {
         return <PageLoader />;
     }
-
+    
     
     if (!session || !session.user) {
         return (
@@ -171,7 +171,7 @@ const Dashboard = () => {
                         <CardTitle className="text-lg text-foreground flex items-center gap-2">
                              Your Unique Link
                         </CardTitle>
-                        <CardDescription>Share this link to receive anonymous messages</CardDescription>
+                        <CardDescription>Share this link to receive messages</CardDescription>
                     </CardHeader>
                     <CardContent>
                         <div className="flex flex-col md:flex-row items-center gap-3">
@@ -188,6 +188,34 @@ const Dashboard = () => {
                     </CardContent>
                 </Card>
 
+                {/* Theme Discovery Card */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <Card className="bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-indigo-950/30 dark:to-blue-950/30 border-indigo-100 dark:border-indigo-900">
+                    <CardContent className="p-5 md:p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                    
+                    {/* Text Section */}
+                    <div className="space-y-2 md:space-y-1 w-full">
+                        <div className="flex items-center gap-2 text-indigo-700 dark:text-indigo-400 font-semibold">
+                        <Palette className="w-5 h-5" />
+                        <span>
+                            <span className="font-bold text-foreground">Style  your</span>  Whisper  Box
+                        </span>
+                        </div>
+                        <p className="text-sm text-muted-foreground w-full md:max-w-[280px]">
+                        Choose a <span className="font-bold text-foreground">theme and add premium gradients</span> for extra vibe.
+                        </p>
+                    </div>
+
+                    {/* Button Section - Full width on mobile, auto on desktop */}
+                    <Link href="/themes" className="w-full md:w-auto">
+                        <Button className="w-full md:w-auto gap-2 bg-indigo-600 hover:bg-indigo-700 text-white shadow-md">
+                        Explore Themes <ArrowRight className="w-4 h-4" />
+                        </Button>
+                    </Link>
+
+                    </CardContent>
+                </Card>
+                </div>
                 {/* Switch Section */}
                 <div className="flex items-center justify-between p-4 rounded-lg border border-border bg-card shadow-sm mb-8 transition-all hover:shadow-md">
                     <div className="flex flex-col gap-1">

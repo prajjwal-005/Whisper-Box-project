@@ -1,5 +1,6 @@
 'use client';
 
+import { useSession } from 'next-auth/react'; 
 import { Mail, Shield, Lock, MessageSquare } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -11,8 +12,9 @@ import {
 } from '@/components/ui/carousel';
 import Link from 'next/link';
 
+
 export default function Home() {
-  
+  const { data: session } = useSession();
   const messages = [
     {
       title: "Secret Admirer",
@@ -69,13 +71,13 @@ return (
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             <Button size="lg" className="text-lg px-8 py-6 dardk.bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 hover:scale-105 hover:shadow-2xl transition-all duration-300">
-               <Link href="/sign-up" >
-                Get Started Free
-            </Link>
+               <Link href={session ? "/dashboard" : "/sign-up"}>
+                  {session ? "View Inbox" : "Create Your Profile Link"}
+              </Link>
             </Button>
             <Button size="lg" variant="outline" className="text-lg px -8 py-6 hover:bg-primary/10 hover:border-primary hover:scale-105 transition-all duration-300">
               <Link href="/about" >
-                See How It Works
+                How It Works
             </Link>
             </Button>
           </div>
@@ -138,7 +140,7 @@ return (
 
         {/* Social Proof */}
         <section className="mt-16 text-center">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-l text-muted-foreground">
             Start receiving anonymous messages today
           </p>
         </section>

@@ -6,25 +6,12 @@ import {dbConnect} from '@/lib/dbConnect';
 import UserModel from '@/model/User.model';
 
 export const authConfig: NextAuthConfig = {
-  debug: true,
   trustHost: true,
   session: { strategy: 'jwt' },
   secret: process.env.AUTH_SECRET,
   pages: {
     signIn: '/sign-in',
   },
-  cookies: {
-  sessionToken: {
-    name: `__Secure-authjs.session-token`,
-    options: {
-      httpOnly: true,
-      sameSite: 'lax',
-      path: '/',
-      secure: true,
-      domain: 'whisper-box.xyz' 
-    }
-  }
-},
   providers: [
     Credentials({
       id: 'credentials',
@@ -74,7 +61,6 @@ export const authConfig: NextAuthConfig = {
         session.user.isAcceptingMessages = token.isAcceptingMessages as boolean;
         session.user.isverified = token.isverified as boolean;
       }
-      console.log('[SESSION CALLBACK]', session);
       return session;
     },
   },

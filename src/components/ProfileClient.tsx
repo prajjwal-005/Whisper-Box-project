@@ -56,7 +56,7 @@ export default function ProfileClient({ username }: { username: string }) {
 
   const messageContent = form.watch('content');
 
-  // ✅ UX Fix: Confirmation for replacing text with suggestions
+
   const handleMessageClick = (message: string) => {
     const currentContent = form.getValues('content');
     if (currentContent.trim() !== '' && currentContent !== message) {
@@ -84,7 +84,6 @@ export default function ProfileClient({ username }: { username: string }) {
   };
 
   const onSubmit = async (data: z.infer<typeof messageSchema>) => {
-    // ✅ Defensive trim check
     if (!data.content.trim()) return;
 
     setIsSending(true);
@@ -101,7 +100,6 @@ export default function ProfileClient({ username }: { username: string }) {
       const axiosError = error as AxiosError<ApiResponse>;
       const status = axiosError.response?.status;
 
-      // ✅ Unified error messaging for 400, 403, 429
       if (status === 400 || status === 403 || status === 429) {
         toast.error('Message could not be delivered', {
           description: "Please try again later.",
@@ -121,7 +119,6 @@ export default function ProfileClient({ username }: { username: string }) {
     setIsOpen(true);
   }, []);
 
-  // ✅ Removed document-level dark mode force to prevent global DOM side-effects
 
   return (
     <div className="min-h-[calc(100vh-80px)] bg-background flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -148,7 +145,7 @@ export default function ProfileClient({ username }: { username: string }) {
                   <FormItem>
                     <div className="flex justify-between items-end">
                       <FormLabel className="font-semibold text-foreground">Your Message</FormLabel>
-                      {/* ✅ Optional: Character Counter */}
+          
                       <span className={`text-xs ${messageContent.length > 300 ? 'text-destructive' : 'text-muted-foreground'}`}>
                         {messageContent.length} / 300
                       </span>
@@ -168,7 +165,7 @@ export default function ProfileClient({ username }: { username: string }) {
               <div className="flex justify-center">
                 <Button 
                   type="submit" 
-                  // ✅ Submit disabled when trimmed empty or over limit
+               
                   disabled={isSending || !messageContent?.trim() || messageContent.length > 300} 
                   className="w-full sm:w-auto min-w-[150px]" 
                 >

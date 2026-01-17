@@ -43,3 +43,4 @@ sitesused.txt
 *.tsbuildinfo
 next-env.d.ts
 src\components\ViralCardThemes.tsx
+src\lib\themes.tsx
