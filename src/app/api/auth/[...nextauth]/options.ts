@@ -20,7 +20,7 @@ export const authConfig: NextAuthConfig = {
         sameSite: 'lax',
         path: '/',
         secure: true,
-        domain: 'whisper-box.xyz' 
+        // domain: 'whisper-box.xyz' 
       }
     }
   },
