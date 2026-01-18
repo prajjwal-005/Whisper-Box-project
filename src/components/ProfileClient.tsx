@@ -226,7 +226,9 @@ export default function ProfileClient({ username }: { username: string }) {
         {/* Footer CTA */}
         <div className="bg-muted/50 px-6 py-6 sm:px-10 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <span className="text-sm text-muted-foreground font-medium">Want your own anonymous board?</span>
-          <Link href={'/sign-up'}>
+          <Link 
+          href={'/sign-up'} 
+          prefetch={false}>
             <Button variant="secondary" className="shadow-sm border border-border">
               Create Free Account
             </Button>
@@ -243,7 +245,10 @@ export default function ProfileClient({ username }: { username: string }) {
             <DialogDescription>
               Please be respectful. All messages are anonymous, but we **automatically filter harmful content**. See more about our
               {' '} 
-              <Link href="/safety" className="text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
+              <Link
+                href="/safety" 
+                prefetch={false} 
+                className="text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
                 safety guidelines
               </Link>.
             </DialogDescription>

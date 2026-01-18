@@ -207,7 +207,10 @@ const Dashboard = () => {
                     </div>
 
                     {/* Button Section - Full width on mobile, auto on desktop */}
-                    <Link href="/themes" className="w-full md:w-auto">
+                    <Link 
+                    href="/themes"
+                    prefetch={false} 
+                    className="w-full md:w-auto">
                         <Button className="w-full md:w-auto gap-2 bg-indigo-600 hover:bg-indigo-700 text-white shadow-md">
                         Explore Themes <ArrowRight className="w-4 h-4" />
                         </Button>

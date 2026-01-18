@@ -11,7 +11,7 @@ export async function sendVerificationEmail(
     const { data, error } = await resend.emails.send({
       from: 'verify@whisper-box.xyz',
       to: email,
-      subject: 'Whisper Box | Verification Code',
+      subject: 'Whisper Box — Verify your email address',
       react: VerificationEmail({ username, otp: verifyCode }),
     });
 

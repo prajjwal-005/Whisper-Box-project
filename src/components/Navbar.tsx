@@ -30,7 +30,7 @@ const Navbar = () => {
             <div className="container mx-auto flex justify-between items-center relative z-50">
                 
                 {/* LOGO */}
-                <Link href="/" className="flex items-center gap-2 group cursor-pointer relative z-50">
+                <Link href="/" prefetch={false} className="flex items-center gap-2 group cursor-pointer relative z-50">
                     <div className="relative w-8 h-8 md:w-10 md:h-10">
                         <Image 
                             src="/logo.png" 
@@ -58,7 +58,7 @@ const Navbar = () => {
                     ) : session ? (
                         <>
                             
-                            <Link href="/dashboard">
+                            <Link href="/dashboard"  prefetch={false}>
                                 <Button size="sm" variant="ghost" className="shadow-sm border border-transparent hover:border-gray-200 dark:hover:border-gray-700">
                                     <LayoutDashboard className="w-4 h-4 md:mr-2" />
                                     <span className="hidden md:inline">Dashboard</span>
@@ -76,7 +76,7 @@ const Navbar = () => {
                             </Button>
                         </>
                     ) : (
-                        <Link href='/sign-in'>
+                        <Link href='/sign-in' prefetch={false}>
                             <Button size="sm" className="shadow-sm">
                                 Login
                             </Button>

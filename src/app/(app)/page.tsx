@@ -12,7 +12,6 @@ import {
 } from '@/components/ui/carousel';
 import Link from 'next/link';
 
-
 export default function Home() {
   const { data: session } = useSession();
   const messages = [
@@ -71,12 +70,18 @@ return (
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             <Button size="lg" className="text-lg px-8 py-6 dardk.bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 hover:scale-105 hover:shadow-2xl transition-all duration-300">
-               <Link href={session ? "/dashboard" : "/sign-up"}>
+               <Link 
+                  href={session ? "/dashboard" : "/sign-up"} 
+                  prefetch={false}
+                  >
                   {session ? "View Inbox" : "Create Your Profile Link"}
               </Link>
             </Button>
             <Button size="lg" variant="outline" className="text-lg px -8 py-6 hover:bg-primary/10 hover:border-primary hover:scale-105 transition-all duration-300">
-              <Link href="/about" >
+              <Link 
+                href="/about" 
+                prefetch={false}
+                >
                 How It Works
             </Link>
             </Button>

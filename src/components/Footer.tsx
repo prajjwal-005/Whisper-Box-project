@@ -6,6 +6,7 @@ const Footer = () => {
       <div className="space-x-4 mb-2 font-medium">
         <Link 
           href="/safety" 
+          prefetch={false}
           className="hover:text-foreground transition-colors"
         >
           Safety Guidelines
@@ -13,13 +14,16 @@ const Footer = () => {
         <span>|</span>
         <Link 
           href="/privacy" 
+          prefetch={false}
           className="hover:text-foreground transition-colors"
         >
           Privacy Policy
         </Link>
         <span>|</span>
-        <Link href="/about"
-         className="hover:text-foreground transition-colors">
+        <Link 
+          href="/about"
+          prefetch={false}
+          className="hover:text-foreground transition-colors">
           About & Support
         </Link>
       </div>
