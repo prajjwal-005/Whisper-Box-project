@@ -89,7 +89,7 @@ const Dashboard = () => {
         if (!session || !session.user) return;
         fetchMessages();
         fetchAcceptMessage();
-    }, [session, setValue, fetchAcceptMessage, fetchMessages]);
+    }, [session]);
 
     // Handle switch change
     const handleSwitchChange = async () => {
